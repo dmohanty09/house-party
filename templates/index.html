@@ -13,8 +13,13 @@
     {% endfor %}
     </ul>
 
-    <h1>Username:</h1>
-    {{ username }}
+    <h1>{{ username }}</h1>
+
+    <ul id="usernames">
+    {% for username in usernames %}
+        <div>{{ username }}</div>
+    {% endfor %}
+    </ul>
 
     {# a comment #}
     

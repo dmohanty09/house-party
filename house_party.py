@@ -61,15 +61,17 @@ def close_connection(exception):
 def hello_world():
 	if 'username' in session:
 		users = []
+		unames = []
 		for user in query_db('select * from users'):
 			uid = user[0].encode()
 			access_token = user[1].encode()
 			users.append(access_token)
+			unames.append(uid)
 			print uid, 'has the access_token', access_token
 		feed = merged_feed(get_users_feed(users))
 		#pdb.set_trace()
 		#return 'Logged in as %s' % escape(session['username'])
-		return render_template('index.html',username=escape(session['username']),oembed_feed=feed)
+		return render_template('index.html',usernames=unames,username=escape(session['username']),oembed_feed=feed)
 	# create client object with app credentials
 	client = soundcloud.Client(client_id='2c4cd2f42c62536556e2d498c4993159',
                            	   client_secret='dfde246cb62560cdf14c4524d76d046f',
