@@ -21,6 +21,7 @@
     <script type="text/javascript">
     	$(function(){
     		$(".track").each(function(t){
+    			$.ajaxSetup({async:true});
     			$.get("oembed/track/"+this.id, function(data){
     				$('#tracks_feed').append(data);
     				console.log(data);
