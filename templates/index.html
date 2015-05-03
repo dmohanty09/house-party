@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>House Party</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <ul id="tracks_feed"></ul>
+
+    <ul id="navigation">
+    {% for track in oembed_feed %}
+        <div class="track" id="{{ track }}">{{ track }}</div>
+    {% endfor %}
+    </ul>
+
+    <h1>Username:</h1>
+    {{ username }}
+
+    {# a comment #}
+    
+    <script type="text/javascript">
+    	$(function(){
+    		$(".track").each(function(t){
+    			$.get("oembed/track/"+this.id, function(data){
+    				$('#tracks_feed').append(data);
+    				console.log(data);
+    			});
+    		});
+    	});
+    </script>
+</body>
+</html>
